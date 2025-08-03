@@ -1,0 +1,670 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rakshith E | Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary-color: #0077ff;
+      --text-color: #000;
+      --bg-color: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #welcome-page {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    #welcome-page video#welcome-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.6;
+      transform: translateY(-2%);
+    }
+
+    .wave {
+      display: inline-block;
+      animation: wave 1s ease-in-out 1;
+      font-size: 4rem;
+      cursor: pointer;
+    }
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      50% { transform: rotate(-15deg); }
+      75% { transform: rotate(15deg); }
+      100% { transform: rotate(0deg); }
+    }
+    #hi-fi {
+      margin-top: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+      animation: hiFiColor 2s infinite alternate;
+    }
+    @keyframes hiFiColor {
+      0% { color: #00c6ff; }
+      50% { color: #ff00cc; }
+      100% { color: #00ff88; }
+    }
+
+    #intro-section {
+      display: none;
+      background: url('./electronics-bg.jpg') no-repeat center top;
+      background-size: cover;
+      color: var(--text-color);
+      text-align: center;
+      padding: 5px 20px 20px;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      position: relative;
+    }
+    #intro-section h1 {
+      font-size: 52px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    #intro-section h2 {
+      font-size: 52px;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 0 0 15px;
+    }
+    #intro-section h3 {
+      font-size: 30px;
+      margin: 0 0 10px;
+      font-weight: normal;
+      color: #333;
+    }
+    #intro-section p {
+      max-width: 900px;
+      margin: 5px auto;
+      font-size: 20px;
+      line-height: 2.2;
+      color: #444;
+    }
+    .intro-buttons {
+      margin-top: 25px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .intro-buttons a {
+      display: inline-block;
+      padding: 14px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      color: white;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .intro-buttons a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .resume-button {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+    }
+    .contact-button {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+    }
+    .contact-popup {
+      display: none;
+      position: absolute;
+      top: 100%;
+      margin-top: 10px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #000;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease-in-out forwards;
+      white-space: nowrap;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .comment-box {
+      display: none;
+      background: #fff;
+      margin-top: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: left;
+      color: #222;
+      font-size: 16px;
+    }
+    .comment-box p {
+      margin: 8px 0;
+    }
+    .creative {
+      font-weight: bold;
+      color: #0077ff;
+    }
+    .about-section-left p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .about-section-left p i {
+      margin-right: 8px;
+    }
+.project-box {
+      display: inline-block;
+      width: 28%;
+      margin: 2%;
+      padding: 20px;
+      vertical-align: top;
+      background: rgb(253, 235, 251);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transform: perspective(1000px) rotateY(0deg);
+      transition: transform 0.3s;
+    }
+    .project-box:hover {
+      transform: perspective(1000px) rotateY(5deg);
+    }
+    .project-box h3 {
+      margin-top: 10px;
+      font-size: 22px;
+    }
+    .project-box .components {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .project-box .components div {
+      flex: 1 1 calc(50% - 10px);
+      background-color: #f1f1f1;
+      padding: 8px;
+      text-align: center;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .skills-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .skills-section h1 {
+      font-size: 45px;
+    }
+    .skills-section p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .skills-box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .skill-card {
+      background-color: #ffeafa;
+      width: 280px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+    .skill-card h3 {
+      margin-bottom: 15px;
+    }
+    .skill-item {
+      background-color: #fad8f6;
+      margin: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: inline-block;
+    }
+    .expert { background-color: #c8f7c5; }
+    .advanced { background-color: #cce5ff; }
+    .intermediate { background-color: #fff3cd; }
+       #contact-section {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #f9f9f9;
+    }
+    .contact-title {
+      width: 100%;
+      text-align: center;
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+    .contact-title span:first-child {
+      font-weight: bold;
+      color: #000;
+    }
+    .contact-title span:last-child {
+      font-weight: bold;
+      color: #0077ff;
+    }
+    .contact-subtitle {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #444;
+    }
+    .contact-left, .contact-right {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+    .contact-info-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .contact-info-box:hover {
+      transform: scale(1.02);
+    }
+    .contact-info-box i {
+      font-size: 20px;
+      margin-right: 10px;
+      color: #0077ff;
+    }
+    .contact-info-box a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .why-connect {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .why-connect h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .why-connect ul {
+      list-style: none;
+      padding: 0;
+    }
+    .why-connect ul li::before {
+      content: '\f0da';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-right: 10px;
+      color: #0077ff;
+    }
+    .quick-message-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .quick-message-box h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .quick-message-box label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    .quick-message-box input,
+    .quick-message-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .quick-message-box button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0077ff;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .quick-message-box button:hover {
+      transform: scale(1.05);
+    }
+    .warning {
+      color: red;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      #contact-section {
+        flex-direction: column;
+        padding: 40px 15px;
+      }
+      .contact-title {
+        font-size: 36px;
+      }
+      .contact-subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+      .contact-left, .contact-right {
+        padding: 10px;
+      }
+    }
+  </style>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+    function enterSite() {
+      document.getElementById('welcome-page').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('welcome-page').style.display = 'none';
+        document.getElementById('intro-section').style.display = 'block';
+        history.pushState(null, null, '#intro');
+      }, 500);
+    }
+    function toggleContactBox(event) {
+      event.preventDefault();
+      const box = document.getElementById('contact-popup');
+      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
+    function toggleComment(id) {
+      const box = document.getElementById(id);
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+    window.onload = function () {
+      document.getElementById('wave-hand').addEventListener('click', enterSite);
+
+      if (window.location.hash === '#intro') {
+        document.getElementById('welcome-page').style.display = 'none';
+        document.getElementById('intro-section').style.display = 'block';
+      }
+    }
+    function sendMessage() {
+      const name = document.getElementById('msg-name').value.trim();
+      const email = document.getElementById('msg-email').value.trim();
+      const subject = document.getElementById('msg-subject').value.trim();
+      const message = document.getElementById('msg-message').value.trim();
+      const warning = document.getElementById('form-warning');
+
+      if (!name || !email || !subject || !message) {
+        warning.style.display = 'block';
+        return;
+      }
+
+      warning.style.display = 'none';
+
+      const fullMessage = 
+      `
+      Name: ${name} 
+      Email: ${email} 
+      Subject: ${subject} 
+      Message: ${message}`;
+      const phoneNumber = '+918904723329'; // Replace with your WhatsApp number
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <!-- Welcome Page -->
+  <div id="welcome-page">
+    <video autoplay muted loop id="welcome-video">
+      <source src="electronics-bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <h1>Welcome to my website—I'm thrilled to have you here!</h1>
+    <div>
+      <span id="wave-hand" class="wave">👋</span>
+    </div>
+    <div id="hi-fi">Hi-Fi</div>
+  </div>
+
+  <!-- Intro Page -->
+  <section id="intro-section">
+    <h1>Hi, I'm</h1>
+    <h2>Rakshith E</h2>
+    <h3>Electronics and Communication Engineering Student</h3>
+    <p>
+      Passionate about bridging the gap between hardware and software to create innovative solutions.<br>
+      I specialize in embedded systems, robotics, and IoT applications that solve real-world problems.<br>
+      With a keen interest in automation and smart technologies, I bring ideas to life through code and circuits.<br>
+      Currently exploring the fascinating world of agricultural technology and drone applications.<br>
+      Always eager to learn, collaborate, and contribute to projects that make a meaningful impact.<br>
+      Beyond academics, I enjoy working on hobby electronics projects, learning new programming languages, and staying updated with emerging tech trends.<br>
+      My goal is to use my skills to create impactful, accessible, and intelligent solutions that improve lives and industries.<br>
+      I'm always on the lookout for exciting opportunities that challenge my creativity and push the boundaries of innovation.
+    </p>
+    <div class="intro-buttons">
+      <a href="./resume.pdf" download class="resume-button" onclick="window.location.hash = '#intro';"><i class="fas fa-download"></i> Download/View Resume</a>
+      <a href="#" class="contact-button" id="contact-btn" onclick="toggleContactBox(event)"><i class="fas fa-phone"></i> Get in Touch</a>
+      <div class="contact-popup" id="contact-popup">
+        📞 Contact Number: 8904723329
+      </div>
+    </div>
+  </section>
+
+  <!-- About Page -->
+  <section id="about-section">
+    <h1 style="text-align:center; font-size: 45px;"><span style="color:black;font-weight:bold">About </span><span style="color:#0077ff;font-weight:bold">me</span></h1>
+    <p style="text-align:center; font-size: 18px;">Discover what drives my passion for technology and innovation</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;padding:40px 20px;align-items:flex-start">
+      <div class="about-section-left" style="flex:1;min-width:300px">
+        <p><i class="fas fa-lightbulb"></i> I'm constantly amazed by how electronics can transform abstract ideas into tangible solutions that impact people's lives.</p>
+        <p><i class="fas fa-cogs"></i> My journey in ECE has taught me that the best innovations happen when hardware meets software in perfect harmony.</p>
+        <p><i class="fas fa-microchip"></i> From designing circuits to programming microcontrollers, I love the challenge of bringing concepts to life.</p>
+        <p><i class="fas fa-robot"></i> Whether it's building autonomous robots or developing IoT solutions, I'm always pushing the boundaries of what's possible.</p>
+        <p><i class="fas fa-globe"></i> What truly excites me is creating technology that not only works but also makes a meaningful difference in society.</p>
+        <p><i class="fas fa-network-wired"></i> I believe in connecting systems for smarter automation and seamless integration.</p>
+        <p><i class="fas fa-brain"></i> Curiosity drives me to keep learning and innovating every single day.</p>
+      </div>
+      <div style="flex:1;min-width:300px;display:flex;flex-direction:column;gap:30px;align-items:center">
+        <div style="width:80%;transform:scale(0.9);background:#e0f7fa;padding:20px;border-radius:10px;box-shadow:4px 4px 10px rgba(0,0,0,0.2);text-align:center;cursor:pointer" onclick="toggleComment('eng-card', this)" id="eng-card">
+          <h3 style="font-size:20px;color:#00796b">4 Years of EC</h3>
+          <p>Engineering</p>
+        </div>
+        <div style="width:80%;transform:scale(0.9);background:#fce4ec;padding:20px;border-radius:10px;box-shadow:4px 4px 10px rgba(0,0,0,0.2);text-align:center;cursor:pointer" onclick="toggleComment('project-comments', this)">
+          <h3 style="font-size:20px;color:#d81b60">3 Projects</h3>
+          <p>working on upcoming projects</p>
+          <div class="comment-box" id="project-comments">
+            <p class="creative">Line Follower Robot</p>
+            <p class="creative">Voice Controlled Robot</p>
+            <p class="creative">Agri-Pestisides Spraying Drone</p>
+            <p>Working on upcomming Projects</p>
+          </div>
+        </div>
+        <div style="width:80%;transform:scale(0.9);background:#ede7f6;padding:20px;border-radius:10px;box-shadow:4px 4px 10px rgba(0,0,0,0.2);text-align:center;cursor:pointer" onclick="toggleComment('idea-comments', this)">
+          <h3 style="font-size:48px;color:#5e35b1">∞</h3>
+          <p>Ideas & Dreams</p>
+          <div class="comment-box" id="idea-comments">
+            <p class="creative">Smart Irrigation System</p>
+            <p class="creative">Voice-enabled Smart Helmet</p>
+            <p class="creative">Energy-efficient Home Automation</p>
+            <p class="creative">AI-powered Traffic Controller</p>
+            <p class="creative">Medical Monitoring Wearable</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Projects Page -->
+  <section id="projects-section">
+    <h1 style="text-align: center; font-size: 45px;">
+      <span style="color: black; font-weight: bold;">My</span>
+      <span style="color: #0077ff; font-weight: bold;">Projects</span>
+    </h1>
+    <p style="text-align: center; font-size: 18px; max-width: 700px; margin: 20px auto;">
+      Innovative solutions that showcase my passion for electronics and automation
+    </p>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+      <div class="project-box">
+        <i class="fas fa-road"></i>
+        <h3>Line Follower Robot</h3>
+        <p>A robot that autonomously follows a black line on a white surface using infrared sensors. It's often used in automation and delivery systems.</p>
+        <h4>Key Components</h4>
+        <div class="components">
+          <div>IR Sensors</div>
+          <div>Arduino Uno</div>
+          <div>Motor Driver</div>
+          <div>Chassis & Wheels</div>
+        </div>
+      </div>
+      <div class="project-box">
+        <i class="fas fa-microphone"></i>
+        <h3>Voice Controlled Robot</h3>
+        <p>This robot responds to specific voice commands to perform movements. It integrates speech recognition with microcontroller logic for hands-free control.</p>
+        <h4>Key Components</h4>
+        <div class="components">
+          <div>Bluetoooth Module</div>
+          <div>Arduino Uno</div>
+          <div>Speech Recognition Module</div>
+          <div>DC Motors</div>
+        </div>
+      </div>
+      <div class="project-box">
+        <i class="fas fa-drone"></i>
+        <h3>Agricultural Pesticide Spraying Drone</h3>
+        <p>A drone designed to spray pesticides efficiently over large fields, reducing manual labor and ensuring even coverage for crop health and yield.</p>
+        <h4>Key Components</h4>
+        <div class="components">
+          <div>Quadcopter Frame</div>
+          <div>Pump Motor</div>
+          <div>Flight Controller</div>
+          <div>Spray Nozzles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Skills Page -->
+<section class="skills-section">
+    <h1><span style="color: black; font-weight: bold;">My</span> <span style="color: #0077ff; font-weight: bold;">Skills</span></h1>
+    <p>A comprehensive toolkit for bringing innovative ideas to life</p>
+    <div class="skills-box">
+      <div class="skill-card">
+        <h3><i class="fas fa-users"></i> Soft Skills</h3>
+        <div class="skill-item expert">Communication</div>
+        <div class="skill-item expert">Problem Solving</div>
+        <div class="skill-item advanced">Critical Thinking</div>
+        <div class="skill-item advanced">Team Collaboration</div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fas fa-microchip"></i> Hardware & Electronics</h3>
+        <div class="skill-item advanced">Circuit Design</div>
+        <div class="skill-item advanced">Microcontrollers</div>
+        <div class="skill-item intermediate">PCB Design</div>
+        <div class="skill-item advanced">Sensor Integration</div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fas fa-code"></i> Programming & Software</h3>
+        <div class="skill-item advanced">C/C++</div>
+        <div class="skill-item expert">Arduino IDE</div>
+        <div class="skill-item advanced">Python</div>
+        <div class="skill-item intermediate">MATLAB</div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fas fa-satellite"></i> Technologies & Protocols</h3>
+        <div class="skill-item advanced">IoT Systems</div>
+        <div class="skill-item advanced">Bluetooth/WiFi</div>
+        <div class="skill-item intermediate">GPS Navigation</div>
+        <div class="skill-item advanced">Robotics</div>
+      </div>
+    </div>
+  </section>
+   <!-- Get In Touch Page -->
+  <section id="contact-section">
+    <div class="contact-title"><span>Get In</span> <span>Touch</span></div>
+    <div class="contact-subtitle">Let's connect and explore opportunities to collaborate on exciting projects</div>
+    <div class="contact-left">
+      <div class="contact-info-box">
+        <a href="mailto:rakshith.e07@gmail.com"><i class="fas fa-envelope"></i> Email<br>rakshith.e07@gmail.com</a>
+      </div>
+      <div class="contact-info-box">
+        <a href="https://www.linkedin.com/in/rakshith-e-29746b25b/" target="_blank"><i class="fab fa-linkedin"></i> Linkedin<br>https://www.linkedin.com/in/rakshith-e-29746b25b/</a>
+      </div>
+      <div class="contact-info-box">
+        <a href="https://instagram.com/_rakshith.e__07" target="_blank"><i class="fab fa-instagram"></i> Instagram<br>_rakshith.e__07</a>
+      </div>
+      <div class="why-connect">
+        <h3>Why Connect With Me?</h3>
+        <ul>
+          <li>Passionate about innovative electronics projects</li>
+          <li>Always eager to learn and collaborate</li>
+          <li>Open to internship and project opportunities</li>
+          <li>Love discussing technology and innovation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="quick-message-box">
+        <h3><i class="fas fa-paper-plane"></i> Send a Quick Message</h3>
+        <label for="msg-name">Name</label>
+        <input type="text" id="msg-name" maxlength="70">
+
+        <label for="msg-email">Email</label>
+        <input type="text" id="msg-email" maxlength="70">
+
+        <label for="msg-subject">Subject</label>
+        <input type="text" id="msg-subject" placeholder="Project Collaborations, Internships, etc." maxlength="150">
+
+        <label for="msg-message">Message</label>
+        <textarea id="msg-message" rows="5" placeholder="Tell me about your Project and how we can collaborate...." maxlength="500"></textarea>
+
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <div id="form-warning" class="warning" style="display: none;">Please fill the above information</div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:20px; background:#222; color:white;">
+    &copy; 2025 Rakshith E. All rights reserved.
+  </footer>
+</body>
+</html>
+
